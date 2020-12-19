@@ -171,8 +171,11 @@
     </Compile>
     <Compile Include="Models\Authentication.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\Orders.cs" />
     <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
