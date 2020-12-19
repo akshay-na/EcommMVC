@@ -1,11 +1,17 @@
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+using Newtonsoft.Json;
 
 namespace EcommMVC.Models
 {
-  public class Orders
+  public class OrderDetails
   {
-
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long OrderId { get; set; }
+    [ForeignKey("Product")]
     public long ProductId { get; set; }
     public long UserId { get; set; }
     public string ItemName { get; set; }
@@ -14,12 +20,15 @@ namespace EcommMVC.Models
     public string OrderStatus { get; set; }
     public bool DeliverStatus { get; set; }
 
-    public Orders()
+    [JsonIgnore]
+    public virtual ProductDetails Product { get; set; }
+
+        public OrderDetails()
     {
 
     }
 
-    public Orders(long orderId, long userId, string itemName, float totalPrice, int itemQuantity, string orderStatus, bool deliverStatus, long productId)
+    public OrderDetails(long orderId, long userId, string itemName, float totalPrice, int itemQuantity, string orderStatus, bool deliverStatus, long productId)
     {
       this.OrderId = orderId;
       this.UserId = userId;
@@ -33,7 +42,7 @@ namespace EcommMVC.Models
 
     public override bool Equals(object obj)
     {
-      return obj is Orders orders &&
+      return obj is OrderDetails orders &&
              OrderId == orders.OrderId &&
              ProductId == orders.ProductId &&
              UserId == orders.UserId &&

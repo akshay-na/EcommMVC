@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -20,6 +21,11 @@ namespace EcommMVC.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<ProductDetails> Product { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<OrderDetails> Order { get; set; }
+   
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

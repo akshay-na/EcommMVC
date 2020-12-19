@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace EcommMVC.Models
 {
   using System;
@@ -8,9 +10,9 @@ namespace EcommMVC.Models
 
   public class Cart
   {
-
+      [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long CartId { get; set; }
-
+      [ForeignKey("Product")]
     public long ItemId { get; set; }
 
     public long UserId { get; set; }
@@ -21,7 +23,10 @@ namespace EcommMVC.Models
 
     public float ItemPrice { get; set; }
 
-    public override bool Equals(object obj)
+    [JsonIgnore]
+    public virtual ProductDetails Product { get; set; }
+
+        public override bool Equals(object obj)
     {
       return obj is Cart cart &&
              CartId == cart.CartId &&

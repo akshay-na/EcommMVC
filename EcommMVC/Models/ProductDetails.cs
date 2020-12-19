@@ -1,23 +1,28 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcommMVC.Models
 {
-  public class Products
+  public class ProductDetails
   {
-
+      
+      
+      
     public long VendorId { get; set; }
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long ProductId { get; set; }
     public string ProductName { get; set; }
     public int ProductQuantity { get; set; }
     public float ProductPrice { get; set; }
     public string ProductCategory { get; set; }
 
-    public Products()
+    public ProductDetails()
     {
 
     }
 
-    public Products(long vendorId, long productId, string productName, int productQuantity, float productPrice, string productCategory)
+    public ProductDetails(long vendorId, long productId, string productName, int productQuantity, float productPrice, string productCategory)
     {
       this.VendorId = vendorId;
       this.ProductId = productId;
@@ -30,7 +35,7 @@ namespace EcommMVC.Models
 
     public override bool Equals(object obj)
     {
-      return obj is Products products &&
+      return obj is ProductDetails products &&
              VendorId == products.VendorId &&
              ProductId == products.ProductId &&
              ProductName == products.ProductName &&
