@@ -9,31 +9,45 @@
 *.dll.config
 *.cache
 *.suo
+
+
 # Include dlls if they’re in the NuGet packages directory
 !/packages/*/lib/*.dll
 !/packages/*/lib/*/*.dll
+
+
 # Include dlls if they're in the CommonReferences directory
 !*CommonReferences/*.dll
+
+
 ####################
 # VS Upgrade stuff #
 ####################
 UpgradeLog.XML
 _UpgradeReport_Files/
+
+
 ###############
 # Directories #
 ###############
 bin/
 obj/
 TestResults/
+
+
 ###################
 # Web publish log #
 ###################
 *.Publish.xml
+
+
 #############
 # Resharper #
 #############
 /_ReSharper.*
 *.ReSharper.*
+
+
 ############
 # Packages #
 ############
@@ -47,11 +61,15 @@ TestResults/
 *.rar
 *.tar
 *.zip
+
+
 ######################
 # Logs and databases #
 ######################
 *.log
 *.sqlite
+
+######################
 # OS generated files #
 ######################
 .DS_Store?
@@ -78,4 +96,6 @@ _[Ss]cripts
 ##################
 #     Custom     #
 ##################
+
+.vscode/
 
