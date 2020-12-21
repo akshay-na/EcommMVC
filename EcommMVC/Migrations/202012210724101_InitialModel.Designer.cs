@@ -13,7 +13,7 @@ namespace EcommMVC.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202012210647158_InitialModel"; }
+            get { return "202012210724101_InitialModel"; }
         }
         
         string IMigrationMetadata.Source

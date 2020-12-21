@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{05771503-195A-48C9-A39E-8FA4D8F95480}</ProjectGuid>
+    <ProjectGuid>{07D96C38-EBE2-4B11-86E5-3DC088732359}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EcommMVC.Tests</RootNamespace>
@@ -99,8 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Controllers\ValuesControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -110,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EcommMVC\EcommMVC.csproj">
-      <Project>{83112B0C-23EF-441E-B91F-96FB8A903DF5}</Project>
+      <Project>{B7066A13-4541-410A-816E-81A47416B9B8}</Project>
       <Name>EcommMVC</Name>
     </ProjectReference>
   </ItemGroup>

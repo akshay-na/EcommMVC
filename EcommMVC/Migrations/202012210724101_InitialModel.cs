@@ -100,6 +100,7 @@ namespace EcommMVC.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        Hometown = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

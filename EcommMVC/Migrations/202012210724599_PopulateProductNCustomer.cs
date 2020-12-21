@@ -3,7 +3,7 @@ namespace EcommMVC.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class PopulateProductsNCustomer : DbMigration
+    public partial class PopulateProductNCustomer : DbMigration
     {
         public override void Up()
         {
@@ -20,6 +20,7 @@ namespace EcommMVC.Migrations
             Sql("INSERT INTO ProductDetails(VendorId, ProductName, ProductPrice, ProductQuantity,  ProductCategory) VALUES (3, 'OnePlus Y-series TV 32', 13999, 100, 'TV')");
             Sql("INSERT INTO ProductDetails(VendorId, ProductName, ProductPrice, ProductQuantity,  ProductCategory) VALUES (3, 'Gaming PC with RTX 3090', 105999, 10, 'GPU')");
         }
+
 
         public override void Down()
         {
