@@ -20,9 +20,7 @@ namespace EcommMVC.Migrations
                     })
                 .PrimaryKey(t => t.CartId)
                 .ForeignKey("dbo.ProductDetails", t => t.ItemId, cascadeDelete: true)
-                .ForeignKey("dbo.Customers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.ItemId)
-                .Index(t => t.UserId);
+                .Index(t => t.ItemId);
             
             CreateTable(
                 "dbo.ProductDetails",
@@ -35,23 +33,7 @@ namespace EcommMVC.Migrations
                         ProductPrice = c.Single(nullable: false),
                         ProductCategory = c.String(),
                     })
-                .PrimaryKey(t => t.ProductId)
-                .ForeignKey("dbo.Customers", t => t.VendorId)
-                .Index(t => t.VendorId);
-            
-            CreateTable(
-                "dbo.Customers",
-                c => new
-                    {
-                        CustomerId = c.Long(nullable: false, identity: true),
-                        CustomerName = c.String(),
-                        CustomerFullName = c.String(),
-                        CustomerPasswordHashed = c.Int(nullable: false),
-                        CustomerEmail = c.String(),
-                        CustomerWallet = c.Single(nullable: false),
-                        CustomerRole = c.String(),
-                    })
-                .PrimaryKey(t => t.CustomerId);
+                .PrimaryKey(t => t.ProductId);
             
             CreateTable(
                 "dbo.OrderDetails",
@@ -68,9 +50,7 @@ namespace EcommMVC.Migrations
                     })
                 .PrimaryKey(t => t.OrderId)
                 .ForeignKey("dbo.ProductDetails", t => t.ProductId, cascadeDelete: true)
-                .ForeignKey("dbo.Customers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.ProductId)
-                .Index(t => t.UserId);
+                .Index(t => t.ProductId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -149,21 +129,15 @@ namespace EcommMVC.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.OrderDetails", "UserId", "dbo.Customers");
             DropForeignKey("dbo.OrderDetails", "ProductId", "dbo.ProductDetails");
-            DropForeignKey("dbo.Carts", "UserId", "dbo.Customers");
             DropForeignKey("dbo.Carts", "ItemId", "dbo.ProductDetails");
-            DropForeignKey("dbo.ProductDetails", "VendorId", "dbo.Customers");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.OrderDetails", new[] { "UserId" });
             DropIndex("dbo.OrderDetails", new[] { "ProductId" });
-            DropIndex("dbo.ProductDetails", new[] { "VendorId" });
-            DropIndex("dbo.Carts", new[] { "UserId" });
             DropIndex("dbo.Carts", new[] { "ItemId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
@@ -171,7 +145,6 @@ namespace EcommMVC.Migrations
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.OrderDetails");
-            DropTable("dbo.Customers");
             DropTable("dbo.ProductDetails");
             DropTable("dbo.Carts");
         }

@@ -8,8 +8,6 @@ namespace EcommMVC.Models
   public class ProductDetails
   {
       
-      
-      [ForeignKey("User")]
     public long? VendorId { get; set; }
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long ProductId { get; set; }
@@ -18,8 +16,6 @@ namespace EcommMVC.Models
     public float ProductPrice { get; set; }
     public string ProductCategory { get; set; }
 
-    [JsonIgnore]
-    public virtual Customers User { get; set; }
 
 
         public ProductDetails()

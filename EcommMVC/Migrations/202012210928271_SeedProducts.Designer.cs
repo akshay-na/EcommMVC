@@ -7,13 +7,13 @@ namespace EcommMVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class PopulateProductNCustomer : IMigrationMetadata
+    public sealed partial class SeedProducts : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulateProductNCustomer));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedProducts));
         
         string IMigrationMetadata.Id
         {
-            get { return "202012210724599_PopulateProductNCustomer"; }
+            get { return "202012210928271_SeedProducts"; }
         }
         
         string IMigrationMetadata.Source

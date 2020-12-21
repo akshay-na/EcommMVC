@@ -14,7 +14,7 @@ namespace EcommMVC.Models
     public long CartId { get; set; }
       [ForeignKey("Product")]
     public long ItemId { get; set; }
-      [ForeignKey("User")]
+
     public long UserId { get; set; }
 
     public string ItemName { get; set; }
@@ -25,8 +25,7 @@ namespace EcommMVC.Models
 
     [JsonIgnore]
     public virtual ProductDetails Product { get; set; }
-    [JsonIgnore]
-    public virtual Customers User { get; set; }
+
 
         public override bool Equals(object obj)
     {

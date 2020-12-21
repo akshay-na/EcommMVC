@@ -7,6 +7,7 @@ using EcommMVC.Models;
 
 namespace EcommMVC.Controllers
 {
+    [AllowAnonymous]
     public class ProductDetailsController : Controller
     {
 
