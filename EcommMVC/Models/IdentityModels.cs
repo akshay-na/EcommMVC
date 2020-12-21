@@ -22,7 +22,7 @@ namespace EcommMVC.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         
-        public DbSet<Users> User { get; set; }
+        public DbSet<Customers> User { get; set; }
         public DbSet<ProductDetails> Product { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<OrderDetails> Order { get; set; }

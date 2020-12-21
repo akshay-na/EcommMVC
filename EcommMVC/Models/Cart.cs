@@ -26,7 +26,7 @@ namespace EcommMVC.Models
     [JsonIgnore]
     public virtual ProductDetails Product { get; set; }
     [JsonIgnore]
-    public virtual Users User { get; set; }
+    public virtual Customers User { get; set; }
 
         public override bool Equals(object obj)
     {

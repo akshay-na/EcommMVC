@@ -19,7 +19,7 @@ namespace EcommMVC.Models
     public string ProductCategory { get; set; }
 
     [JsonIgnore]
-    public virtual Users User { get; set; }
+    public virtual Customers User { get; set; }
 
 
         public ProductDetails()
