@@ -17,7 +17,7 @@ namespace EcommMVC
 
                 name: "Products",
                 url: "products/{id}",
-                defaults: new { Controller = "ProductDetails", action = "Index", id = UrlParameter.Optional}
+                defaults: new { Controller = "ProductDetails", action = "Index", id = UrlParameter.Optional }
 
             );
 
