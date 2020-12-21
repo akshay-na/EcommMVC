@@ -236,6 +236,10 @@
     <Compile Include="Migrations\202012211023140_SeedProducts.Designer.cs">
       <DependentUpon>202012211023140_SeedProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012211209264_AddedReuqiredForProduct.cs" />
+    <Compile Include="Migrations\202012211209264_AddedReuqiredForProduct.Designer.cs">
+      <DependentUpon>202012211209264_AddedReuqiredForProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -338,6 +342,7 @@
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Views\ProductDetails\Details.cshtml" />
     <Content Include="Views\ProductDetails\Index.cshtml" />
+    <Content Include="Views\ProductDetails\AddProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -381,6 +386,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012211023140_SeedProducts.resx">
       <DependentUpon>202012211023140_SeedProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012211209264_AddedReuqiredForProduct.resx">
+      <DependentUpon>202012211209264_AddedReuqiredForProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

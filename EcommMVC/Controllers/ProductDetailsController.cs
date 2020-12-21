@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using EcommMVC.Models;
+using Microsoft.AspNet.Identity;
 
 namespace EcommMVC.Controllers
 {
@@ -43,6 +45,60 @@ namespace EcommMVC.Controllers
                 return HttpNotFound();
 
             return View(Product);
+        }
+
+        // GET: /Manage/AddProducts
+        public ActionResult AddProducts()
+        {
+
+            return View();
+
+        }
+
+        // POST: /Manage/AddProducts
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddProducts(ProductDetails product)
+        {
+
+            
+
+            if (!ModelState.IsValid)
+            {
+                return View(product);
+            }
+
+
+                _context.Product.Add(product);
+
+               
+
+
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting
+                        // the current instance as InnerException
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
+            }
+            
+            return RedirectToAction("Index", "Home");
+
         }
 
     }

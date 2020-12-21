@@ -10,12 +10,16 @@ namespace EcommMVC.Models
 
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long ProductId { get; set; }
-    [Required]
-    [StringLength(128)]
+
+    [Required] [StringLength(128)] 
     public string VendorId { get; set; }
-        public string ProductName { get; set; }
+    [Required]
+    public string ProductName { get; set; }
+    [Required]
     public int ProductQuantity { get; set; }
+    [Required]
     public float ProductPrice { get; set; }
+    [Required]
     public string ProductCategory { get; set; }
 
 
@@ -60,4 +64,5 @@ namespace EcommMVC.Models
       return hashCode;
     }
   }
+
 }
