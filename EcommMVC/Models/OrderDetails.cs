@@ -13,6 +13,7 @@ namespace EcommMVC.Models
     public long OrderId { get; set; }
     [ForeignKey("Product")]
     public long ProductId { get; set; }
+    [ForeignKey("User")]
     public long UserId { get; set; }
     public string ItemName { get; set; }
     public float TotalPrice { get; set; }
@@ -22,6 +23,8 @@ namespace EcommMVC.Models
 
     [JsonIgnore]
     public virtual ProductDetails Product { get; set; }
+    [JsonIgnore]
+    public virtual Users User { get; set; }
 
         public OrderDetails()
     {

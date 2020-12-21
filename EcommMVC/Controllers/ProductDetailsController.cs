@@ -27,7 +27,7 @@ namespace EcommMVC.Controllers
         {
 
             var Products = _context.Product;
-            
+
             return View(Products);
         }
 

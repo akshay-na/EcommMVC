@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace EcommMVC.Models
 {
@@ -8,8 +9,8 @@ namespace EcommMVC.Models
   {
       
       
-      
-    public long VendorId { get; set; }
+      [ForeignKey("User")]
+    public long? VendorId { get; set; }
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long ProductId { get; set; }
     public string ProductName { get; set; }
@@ -17,7 +18,11 @@ namespace EcommMVC.Models
     public float ProductPrice { get; set; }
     public string ProductCategory { get; set; }
 
-    public ProductDetails()
+    [JsonIgnore]
+    public virtual Users User { get; set; }
+
+
+        public ProductDetails()
     {
 
     }

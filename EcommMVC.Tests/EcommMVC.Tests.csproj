@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{33A37C42-0342-46B4-8CDA-8FF528D56380}</ProjectGuid>
+    <ProjectGuid>{05771503-195A-48C9-A39E-8FA4D8F95480}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EcommMVC.Tests</RootNamespace>
@@ -110,7 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EcommMVC\EcommMVC.csproj">
-      <Project>{25BB9FAC-555A-48FC-B1A7-AA83B9D21E69}</Project>
+      <Project>{83112B0C-23EF-441E-B91F-96FB8A903DF5}</Project>
       <Name>EcommMVC</Name>
     </ProjectReference>
   </ItemGroup>

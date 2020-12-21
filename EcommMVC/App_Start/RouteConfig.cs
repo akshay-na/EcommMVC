@@ -14,14 +14,6 @@ namespace EcommMVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-
-                name: "Products",
-                url: "products/{id}",
-                defaults: new { Controller = "ProductDetails", action = "Index", id = UrlParameter.Optional }
-
-            );
-
-            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
