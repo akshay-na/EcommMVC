@@ -13,7 +13,9 @@ namespace EcommMVC.Models
     public long OrderId { get; set; }
     [ForeignKey("Product")]
     public long ProductId { get; set; }
-    public long UserId { get; set; }
+    [Required]
+    [StringLength(128)]
+    public string UserId { get; set; }
     public string ItemName { get; set; }
     public float TotalPrice { get; set; }
     public int ItemQuantity { get; set; }
@@ -21,14 +23,15 @@ namespace EcommMVC.Models
     public bool DeliverStatus { get; set; }
 
     [JsonIgnore]
-
     public virtual ProductDetails Product { get; set; }
-    public OrderDetails()
+
+
+        public OrderDetails()
     {
 
     }
 
-    public OrderDetails(long orderId, long userId, string itemName, float totalPrice, int itemQuantity, string orderStatus, bool deliverStatus, long productId)
+    public OrderDetails(long orderId, string userId, string itemName, float totalPrice, int itemQuantity, string orderStatus, bool deliverStatus, long productId)
     {
       this.OrderId = orderId;
       this.UserId = userId;

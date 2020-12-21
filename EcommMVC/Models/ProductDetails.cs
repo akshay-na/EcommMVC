@@ -7,8 +7,9 @@ namespace EcommMVC.Models
 {
   public class ProductDetails
   {
-      
-    public long? VendorId { get; set; }
+      [Required]
+      [StringLength(128)]
+      public string VendorId { get; set; }
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long ProductId { get; set; }
     public string ProductName { get; set; }
@@ -18,12 +19,13 @@ namespace EcommMVC.Models
 
 
 
+
         public ProductDetails()
     {
 
     }
 
-    public ProductDetails(long vendorId, long productId, string productName, int productQuantity, float productPrice, string productCategory)
+    public ProductDetails(string vendorId, long productId, string productName, int productQuantity, float productPrice, string productCategory)
     {
       this.VendorId = vendorId;
       this.ProductId = productId;

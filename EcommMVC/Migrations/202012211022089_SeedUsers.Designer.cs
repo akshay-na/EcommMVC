@@ -13,7 +13,7 @@ namespace EcommMVC.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202012210941287_SeedUsers"; }
+            get { return "202012211022089_SeedUsers"; }
         }
         
         string IMigrationMetadata.Source

@@ -14,17 +14,16 @@ namespace EcommMVC.Models
     public long CartId { get; set; }
       [ForeignKey("Product")]
     public long ItemId { get; set; }
-
-    public long UserId { get; set; }
-
+    [Required]
+    [StringLength(128)]
+        public string UserId { get; set; }
     public string ItemName { get; set; }
-
     public int ItemQuantity { get; set; }
-
     public float ItemPrice { get; set; }
 
     [JsonIgnore]
     public virtual ProductDetails Product { get; set; }
+    
 
 
         public override bool Equals(object obj)
@@ -50,7 +49,7 @@ namespace EcommMVC.Models
       return hashCode;
     }
 
-    public Cart(long cartId, long itemId, long userId, string itemName, int itemQuantity, float itemPrice)
+    public Cart(long cartId, long itemId, string userId, string itemName, int itemQuantity, float itemPrice)
     {
       this.CartId = cartId;
       this.ItemId = itemId;

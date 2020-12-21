@@ -13,13 +13,14 @@ namespace EcommMVC.Migrations
                     {
                         CartId = c.Long(nullable: false, identity: true),
                         ItemId = c.Long(nullable: false),
-                        UserId = c.Long(nullable: false),
+                        UserId = c.String(nullable: false, maxLength: 128),
                         ItemName = c.String(),
                         ItemQuantity = c.Int(nullable: false),
                         ItemPrice = c.Single(nullable: false),
                     })
                 .PrimaryKey(t => t.CartId)
                 .ForeignKey("dbo.ProductDetails", t => t.ItemId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.ItemId);
             
             CreateTable(
@@ -27,12 +28,13 @@ namespace EcommMVC.Migrations
                 c => new
                     {
                         ProductId = c.Long(nullable: false, identity: true),
-                        VendorId = c.Long(),
+                        VendorId = c.String(nullable: false, maxLength: 128),
                         ProductName = c.String(),
                         ProductQuantity = c.Int(nullable: false),
                         ProductPrice = c.Single(nullable: false),
                         ProductCategory = c.String(),
                     })
+                .ForeignKey("dbo.AspNetUsers", t => t.VendorId)
                 .PrimaryKey(t => t.ProductId);
             
             CreateTable(
@@ -41,7 +43,7 @@ namespace EcommMVC.Migrations
                     {
                         OrderId = c.Long(nullable: false, identity: true),
                         ProductId = c.Long(nullable: false),
-                        UserId = c.Long(nullable: false),
+                        UserId = c.String(nullable: false, maxLength: 128),
                         ItemName = c.String(),
                         TotalPrice = c.Single(nullable: false),
                         ItemQuantity = c.Int(nullable: false),
@@ -50,6 +52,7 @@ namespace EcommMVC.Migrations
                     })
                 .PrimaryKey(t => t.OrderId)
                 .ForeignKey("dbo.ProductDetails", t => t.ProductId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.ProductId);
             
             CreateTable(

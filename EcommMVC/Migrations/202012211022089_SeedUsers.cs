@@ -7,8 +7,7 @@ namespace EcommMVC.Migrations
     {
         public override void Up()
         {
-            
-            
+
             Sql(@"
 
                 INSERT INTO [dbo].[AspNetUsers] ([Id], [Hometown], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (N'2b988239-34c3-4e17-845c-e60d9fe0aec7', N'XXXXX', N'akshayna04698@gmail.com', 0, N'AHxgqgGa9dm4xTBMHzZ/CPXmzhdzrERsJ0ofUb8oqGhWGUM9ZJUrGGIjypRzXh0PUw==', N'2f22728c-e71f-412f-8f16-ac0e6d32d331', NULL, 0, 0, NULL, 1, 0, N'akshayna04698@gmail.com');
@@ -22,6 +21,7 @@ namespace EcommMVC.Migrations
                 INSERT INTO [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'ab88e6a7-fc8c-4dc6-8e7e-14686462b161', N'3d653914-5e7a-4540-8b07-b1867dd25256');
                
                 ");
+
         }
         
         public override void Down()
