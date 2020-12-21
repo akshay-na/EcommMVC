@@ -20,7 +20,7 @@ namespace EcommMVC.Migrations
                     })
                 .PrimaryKey(t => t.CartId)
                 .ForeignKey("dbo.ProductDetails", t => t.ItemId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.ItemId);
             
             CreateTable(
@@ -28,14 +28,15 @@ namespace EcommMVC.Migrations
                 c => new
                     {
                         ProductId = c.Long(nullable: false, identity: true),
-                        VendorId = c.String(nullable: false, maxLength: 128),
+                        VendorId = c.String(nullable: true, maxLength: 128),
                         ProductName = c.String(),
                         ProductQuantity = c.Int(nullable: false),
                         ProductPrice = c.Single(nullable: false),
                         ProductCategory = c.String(),
                     })
+                .PrimaryKey(t => t.ProductId)
                 .ForeignKey("dbo.AspNetUsers", t => t.VendorId)
-                .PrimaryKey(t => t.ProductId);
+                .Index(t => t.ProductId); ;
             
             CreateTable(
                 "dbo.OrderDetails",
@@ -52,7 +53,7 @@ namespace EcommMVC.Migrations
                     })
                 .PrimaryKey(t => t.OrderId)
                 .ForeignKey("dbo.ProductDetails", t => t.ProductId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.ProductId);
             
             CreateTable(

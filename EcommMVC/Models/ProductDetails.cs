@@ -7,12 +7,13 @@ namespace EcommMVC.Models
 {
   public class ProductDetails
   {
-      [Required]
-      [StringLength(128)]
-      public string VendorId { get; set; }
+
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long ProductId { get; set; }
-    public string ProductName { get; set; }
+    [Required]
+    [StringLength(128)]
+    public string VendorId { get; set; }
+        public string ProductName { get; set; }
     public int ProductQuantity { get; set; }
     public float ProductPrice { get; set; }
     public string ProductCategory { get; set; }
