@@ -34,6 +34,17 @@ namespace EcommMVC.Controllers
             return View(Products);
         }
 
+        //GET: /Products/MyProducts
+        public ActionResult MyProducts()
+        {
+
+            var myProduct = _context.Product.ToList().Where(p => p.VendorId == User.Identity.GetUserId());
+
+            return View(myProduct);
+
+        }
+
+
 
         public ActionResult Details(int id)
 
@@ -44,37 +55,63 @@ namespace EcommMVC.Controllers
             if (Product == null)
                 return HttpNotFound();
 
+
+           
+            
             return View(Product);
         }
 
-        // GET: /Manage/AddProducts
+        // GET: /Products/AddProducts
         public ActionResult AddProducts()
         {
 
             return View();
 
         }
-
-        // POST: /Manage/AddProducts
+        
+        // POST: /Products/AddProducts
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddProducts(ProductDetails product)
         {
-
-            
 
             if (!ModelState.IsValid)
             {
                 return View(product);
             }
 
+            _context.Product.Add(product);
 
-               _context.Product.Add(product);
+            UpdateDatabase();
+            
+            return RedirectToAction("Index", "Home");
 
-               
+        }
+        
+        //POST: /Products/RemoveProducts
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RemoveProducts(int productId)
+        {
 
+            var RemoveItem = _context.Product.SingleOrDefault(p => p.ProductId == productId);
 
+            if (!ModelState.IsValid)
+            {
+                return View(productId);
+            }
 
+            _context.Product.Remove(RemoveItem);
+
+            UpdateDatabase();
+
+            return RedirectToAction("MyProducts", "ProductDetails");
+
+        }
+
+        // A Exception Handling Method for Updating the database records.
+        private int UpdateDatabase()
+        {
             try
             {
                 _context.SaveChanges();
@@ -96,10 +133,10 @@ namespace EcommMVC.Controllers
                 }
                 throw raise;
             }
-            
-            return RedirectToAction("Index", "Home");
 
+            return 0;
         }
+
 
     }
 }

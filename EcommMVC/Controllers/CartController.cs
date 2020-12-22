@@ -37,14 +37,21 @@ namespace EcommMVC.Controllers
         }
 
 
-
-        // POST: /Cart/AddtoCart
+        // POST: /Cart/AddToCart
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AddtoCart(Cart cart)
+        public async Task<ActionResult> AddToCart(Cart cart)
         {
 
 
+            if (!ModelState.IsValid)
+            {
+                return View(cart);
+            }
+
+            _context.Carts.Add(cart);
+
+            UpdateDatabase();
 
             return RedirectToAction("Index", "ProductDetails");
 
@@ -53,13 +60,52 @@ namespace EcommMVC.Controllers
         // POST: /Cart/RemoveFromCart
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RemoveFromCart(Cart cart)
+        public async Task<ActionResult> RemoveFromCart(int cartId)
         {
 
+            var RemoveItem = _context.Carts.SingleOrDefault(c => c.CartId == cartId);
+            
+            if (!ModelState.IsValid)
+            {
+                return View(cartId);
+            }
+
+            _context.Carts.Remove(RemoveItem);
+
+            UpdateDatabase();
 
 
             return RedirectToAction("Index", "Cart");
 
+        }
+
+        
+        // A Exception Handling Method for Updating the database records.
+        private int UpdateDatabase()
+        {
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting
+                        // the current instance as InnerException
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
+            }
+
+            return 0;
         }
 
     }

@@ -388,6 +388,10 @@
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\AddtoCart.cshtml" />
+    <Content Include="Views\Cart\RemoveFromCart.cshtml" />
+    <Content Include="Views\ProductDetails\RemoveProducts.cshtml" />
+    <Content Include="Views\ProductDetails\MyProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

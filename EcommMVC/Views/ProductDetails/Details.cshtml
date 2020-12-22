@@ -1,8 +1,11 @@
-﻿@model EcommMVC.Models.ProductDetails
+﻿@using EcommMVC.Models
+@using Microsoft.AspNet.Identity
+@model EcommMVC.Models.ProductDetails
 @{
     ViewBag.Title = "Model.ProductName";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <h1>       @Model.ProductName</h1>
 <h2>------------------------------------------</h2>
@@ -11,5 +14,25 @@
 <h3>Available Quantity: @Model.ProductQuantity</h3>
 <h3>Vendor Id:          @Model.VendorId</h3>
 <h2>Price:              @Model.ProductPrice ₹ </h2>
+
+<br>
+
+
+@{
+    var cart = new Cart();
+
+    cart.ItemId = @Model.ProductId;
+    cart.UserId = User.Identity.GetUserId();
+    cart.ItemName = @Model.ProductName;
+    cart.ItemQuantity = 1;
+    cart.ItemPrice = @Model.ProductPrice * cart.ItemQuantity;
+}
+
+<form action="@Url.Action("AddToCart", "Cart", cart)" method="POST">
+    @Html.AntiForgeryToken()
+    <input class="btn btn-warning" type="submit" value="Add To Cart"/>
+</form>
+
+<input class="btn btn-warning" type="button" value="Buy Now" onclick="location.href='@Url.Action("AddToCart", "Cart")'" />
 
 

@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "MyProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Products</h2>
+
+<table class="table table-bordered table-hover">
+    <thread>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Quantity</th>
+            <th>Product Price</th>
+            <th>Action</th>
+        </tr>
+    </thread>
+    <tbody>
+    @foreach (var myProduct in Model)
+    {
+
+        <tr>
+            <td>@myProduct.ProductName</td>
+            <td>@myProduct.ProductQuantity</td>
+            <td>@myProduct.ProductPrice</td>
+            <td>
+                
+                <form action="@Url.Action("RemoveProducts", "ProductDetails", new {productId = myProduct.ProductId})" method="POST">
+                    @Html.AntiForgeryToken()
+                    <input class="btn btn-danger" type="submit" value="Remove Item"/>
+                </form>
+
+            </td>
+        </tr>
+
+    }
+    </tbody>
+</table>
