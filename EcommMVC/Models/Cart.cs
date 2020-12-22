@@ -1,14 +1,13 @@
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
 
 namespace EcommMVC.Models
 {
-  using System;
-  using System.Collections.Generic;
-  using System.ComponentModel.DataAnnotations;
-  using System.ComponentModel.DataAnnotations.Schema;
-  using System.Data.Entity.Spatial;
-
-  public class Cart
+    public class Cart
   {
       [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long CartId { get; set; }
@@ -23,6 +22,13 @@ namespace EcommMVC.Models
 
     [JsonIgnore]
     public virtual ProductDetails Product { get; set; }
+
+
+
+    public Cart()
+    {
+
+    }
     
 
 

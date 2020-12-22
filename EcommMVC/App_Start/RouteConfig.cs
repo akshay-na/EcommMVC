@@ -15,6 +15,14 @@ namespace EcommMVC
 
             routes.MapRoute(
 
+                name: "Home",
+                url: "",
+                defaults: new { Controller = "ProductDetails", action = "Index", id = UrlParameter.Optional }
+
+            );
+
+            routes.MapRoute(
+
                 name: "Products",
                 url: "products/{action}/{id}",
                 defaults: new { Controller = "ProductDetails", action = "Index", id = UrlParameter.Optional }

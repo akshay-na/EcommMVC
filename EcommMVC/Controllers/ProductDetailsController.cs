@@ -69,7 +69,7 @@ namespace EcommMVC.Controllers
             }
 
 
-                _context.Product.Add(product);
+               _context.Product.Add(product);
 
                
 

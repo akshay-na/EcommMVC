@@ -1,0 +1,48 @@
+﻿@using System.Linq
+@using EcommMVC.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Cart</h2>
+
+
+@if(Model.Count == 0){
+
+
+    <p>You Don't Have Any Items In Your Cart. Please Add Items To Continue</p>
+
+
+}
+else
+{
+
+    <table class="table table-bordered table-hover">
+        <thread>
+            <tr>
+                <th>Cart Items</th>
+                <th>Item Quantity</th>
+                <th>Price</th>
+                <td>Action</td>
+            </tr>
+        </thread>
+        <tbody>
+        @foreach (var cart in Model)
+        {
+
+            <tr>
+                <td>@Html.ActionLink((string)cart.ItemName, "Details", "ProductDetails", new { id = cart.ItemId })</td>
+                <td>@cart.ItemQuantity</td>
+                <td>@cart.ItemPrice</td>
+                <td><input class="btn btn-danger" type="button" value="Remove Item" onclick="location.href='@Url.Action("RemoveFromCart", "Cart")'" /></td>
+                
+            </tr>
+
+        }
+        </tbody>
+    </table>
+
+}
+
+
