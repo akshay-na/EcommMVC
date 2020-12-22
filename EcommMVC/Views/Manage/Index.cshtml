@@ -83,15 +83,19 @@
             }*@
         </dd>
 
-        <dt> Add Products: </dt>
-        <dd>
-            @Html.ActionLink("Add A Product", "AddProducts", "ProductDetails", "", "AddProducts")
-        </dd>
+        @if (User.IsInRole("Vendor") || User.IsInRole("vendor"))
+        {
+            <dt> Add Products: </dt>
+            <dd>
+                @Html.ActionLink("Add A Product", "AddProducts", "ProductDetails", "", "AddProducts")
+            </dd>
 
-        <dt> Your Products: </dt>
-        <dd>
-            @Html.ActionLink("Manage My Products", "MyProducts", "ProductDetails", "", "")
-        </dd>
+            <dt> Your Products: </dt>
+            <dd>
+                @Html.ActionLink("Manage My Products", "MyProducts", "ProductDetails", "", "")
+            </dd>
+        }
+ 
 
     </dl>
 </div>

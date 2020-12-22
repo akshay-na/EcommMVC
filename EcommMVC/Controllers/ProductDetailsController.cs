@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -35,6 +36,7 @@ namespace EcommMVC.Controllers
         }
 
         //GET: /Products/MyProducts
+        [Authorize(Roles = "Vendor")]
         public ActionResult MyProducts()
         {
 
@@ -62,6 +64,7 @@ namespace EcommMVC.Controllers
         }
 
         // GET: /Products/AddProducts
+        [Authorize(Roles = "Vendor")]
         public ActionResult AddProducts()
         {
 
@@ -72,6 +75,7 @@ namespace EcommMVC.Controllers
         // POST: /Products/AddProducts
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Vendor")]
         public async Task<ActionResult> AddProducts(ProductDetails product)
         {
 
@@ -91,6 +95,7 @@ namespace EcommMVC.Controllers
         //POST: /Products/RemoveProducts
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Vendor")]
         public async Task<ActionResult> RemoveProducts(int productId)
         {
 

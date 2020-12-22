@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace EcommMVC.Controllers
 {
-    [System.Web.Mvc.Authorize]
+    [Authorize]
     public class CartController : Controller
     {
         private ApplicationDbContext _context;
@@ -32,8 +32,9 @@ namespace EcommMVC.Controllers
         {
 
             var cart = _context.Carts.ToList().Where(c => c.UserId == User.Identity.GetUserId());
-            
+
             return View(cart);
+            
         }
 
 
