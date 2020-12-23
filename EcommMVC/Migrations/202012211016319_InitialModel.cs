@@ -1,6 +1,6 @@
 namespace EcommMVC.Migrations
 {
-    using System;
+
     using System.Data.Entity.Migrations;
     
     public partial class InitialModel : DbMigration
@@ -36,7 +36,7 @@ namespace EcommMVC.Migrations
                     })
                 .PrimaryKey(t => t.ProductId)
                 .ForeignKey("dbo.AspNetUsers", t => t.VendorId)
-                .Index(t => t.ProductId); ;
+                .Index(t => t.ProductId); 
             
             CreateTable(
                 "dbo.OrderDetails",

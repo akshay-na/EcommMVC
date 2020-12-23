@@ -241,6 +241,10 @@
     <Compile Include="Migrations\202012211209264_AddedReuqiredForProduct.Designer.cs">
       <DependentUpon>202012211209264_AddedReuqiredForProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012221037564_AddedWalletField.cs" />
+    <Compile Include="Migrations\202012221037564_AddedWalletField.Designer.cs">
+      <DependentUpon>202012221037564_AddedWalletField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -393,10 +397,10 @@
     <Content Include="Views\Cart\RemoveFromCart.cshtml" />
     <Content Include="Views\ProductDetails\RemoveProducts.cshtml" />
     <Content Include="Views\ProductDetails\MyProducts.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -439,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012211209264_AddedReuqiredForProduct.resx">
       <DependentUpon>202012211209264_AddedReuqiredForProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012221037564_AddedWalletField.resx">
+      <DependentUpon>202012221037564_AddedWalletField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
