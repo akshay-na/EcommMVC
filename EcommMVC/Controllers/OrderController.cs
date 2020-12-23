@@ -25,11 +25,11 @@ namespace EcommMVC.Controllers
             _context.Dispose();
         }
 
-        // GET: Order
+        // GET: OrderDetails
         public ActionResult Index()
         {
 
-           var myOrders =  _context.Order.ToList().Where(o => o.UserId == User.Identity.GetUserId());
+           var myOrders =  _context.OrderDetails.ToList().Where(o => o.UserId == User.Identity.GetUserId());
             
             return View(myOrders);
         }
@@ -49,7 +49,7 @@ namespace EcommMVC.Controllers
 
             foreach (var order in orders)
             {
-                _context.Order.Add(order);
+                _context.OrderDetails.Add(order);
                 TotalAmount = TotalAmount + order.TotalPrice;
             }
 

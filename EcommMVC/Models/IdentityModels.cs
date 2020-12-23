@@ -27,7 +27,8 @@ namespace EcommMVC.Models
 
         public DbSet<ProductDetails> Product { get; set; }
         public DbSet<Cart> Carts { get; set; }
-        public DbSet<OrderDetails> Order { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

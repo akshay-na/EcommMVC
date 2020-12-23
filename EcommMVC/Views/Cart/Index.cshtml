@@ -33,7 +33,7 @@ else
         order.ItemQuantity = item.ItemQuantity;
         order.ItemName = item.ItemName;
         order.TotalPrice = item.ItemPrice;
-        order.OrderStatus = "Order Placed";
+        order.OrderStatus = "OrderDetails Placed";
         order.DeliverStatus = false;
 
         orders.Add(order);
@@ -82,7 +82,7 @@ else
             <td>
                 @*<form action="@Url.Action("RemoveFromCart", "Cart", new {cartId = cart.CartId})" method="POST">
                     @Html.AntiForgeryToken()
-                    <input class="btn btn-warning" type="submit" value="Place Order" />
+                    <input class="btn btn-warning" type="submit" value="Place OrderDetails" />
                 </form>*@
             </td>
         </tr>

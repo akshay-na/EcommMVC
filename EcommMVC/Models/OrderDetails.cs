@@ -10,7 +10,10 @@ namespace EcommMVC.Models
   public class OrderDetails
   {
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public long Id { get; set; }
+    [Required]
     public long OrderId { get; set; }
+    [Required]
     [ForeignKey("Product")]
     public long ProductId { get; set; }
     [Required]
@@ -24,6 +27,9 @@ namespace EcommMVC.Models
 
     [JsonIgnore]
     public virtual ProductDetails Product { get; set; }
+    [JsonIgnore]
+    [ForeignKey("OrderId")]
+    public virtual Order order { get; set; }
 
 
         public OrderDetails()
@@ -31,9 +37,9 @@ namespace EcommMVC.Models
 
     }
 
-    public OrderDetails(long orderId, string userId, string itemName, float totalPrice, int itemQuantity, string orderStatus, bool deliverStatus, long productId)
+    public OrderDetails(long id, string userId, string itemName, float totalPrice, int itemQuantity, string orderStatus, bool deliverStatus, long productId)
     {
-      this.OrderId = orderId;
+      this.Id = id;
       this.UserId = userId;
       this.ItemName = itemName;
       this.TotalPrice = totalPrice;
@@ -46,20 +52,21 @@ namespace EcommMVC.Models
     public override bool Equals(object obj)
     {
       return obj is OrderDetails orders &&
-             OrderId == orders.OrderId &&
+             Id == orders.Id &&
              ProductId == orders.ProductId &&
              UserId == orders.UserId &&
              ItemName == orders.ItemName &&
              TotalPrice == orders.TotalPrice &&
              ItemQuantity == orders.ItemQuantity &&
              OrderStatus == orders.OrderStatus &&
-             DeliverStatus == orders.DeliverStatus;
+             DeliverStatus == orders.DeliverStatus &&
+             OrderId == orders.OrderId;
     }
 
     public override int GetHashCode()
     {
       int hashCode = 88120017;
-      hashCode = hashCode * -1521134295 + OrderId.GetHashCode();
+      hashCode = hashCode * -1521134295 + Id.GetHashCode();
       hashCode = hashCode * -1521134295 + ProductId.GetHashCode();
       hashCode = hashCode * -1521134295 + UserId.GetHashCode();
       hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ItemName);
@@ -67,6 +74,7 @@ namespace EcommMVC.Models
       hashCode = hashCode * -1521134295 + ItemQuantity.GetHashCode();
       hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(OrderStatus);
       hashCode = hashCode * -1521134295 + DeliverStatus.GetHashCode();
+      hashCode = hashCode * -1521134295 + OrderId.GetHashCode();
       return hashCode;
     }
   }
