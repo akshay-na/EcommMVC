@@ -1,19 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace EcommMVC.Models
 {
   public class Order
   {
-
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long OrderId { get; set; }
     public string UserId { get; set; }
+    [Required]
     public string CCAddress { get; set; }
     public string CCName { get; set; }
-    public int CCNumber { get; set; }
+    [Required]
+    public int CCNumber { get; set; } 
+    [Required] 
     public string CCExpiryDate { get; set; }
+    
+    [JsonIgnore]
+    [ForeignKey("UserId")]
+    public virtual ApplicationUser User { get; set; }
 
     public Order()
     {

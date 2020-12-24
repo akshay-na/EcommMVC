@@ -218,6 +218,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -253,6 +254,10 @@
     <Compile Include="Migrations\202012230636111_AddedOrder.designer.cs">
       <DependentUpon>202012230636111_AddedOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012230652318_ModifiedOrderModel.cs" />
+    <Compile Include="Migrations\202012230652318_ModifiedOrderModel.designer.cs">
+      <DependentUpon>202012230652318_ModifiedOrderModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -267,6 +272,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ListOfOrderDetails.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -420,6 +426,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
+    <Content Include="Views\Invoice\GenerateInvoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -448,6 +455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012230636111_AddedOrder.resx">
       <DependentUpon>202012230636111_AddedOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012230652318_ModifiedOrderModel.resx">
+      <DependentUpon>202012230652318_ModifiedOrderModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

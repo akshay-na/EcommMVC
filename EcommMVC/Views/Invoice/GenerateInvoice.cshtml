@@ -1,0 +1,72 @@
+﻿@using System.Web.Script.Services
+@using EcommMVC.Models
+
+@{
+    ViewBag.Title = "GenerateInvoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var subTotal = 0.00;
+}
+
+<h2>Invoice</h2>
+
+<div class="col-lg-12 col-md-12 col-sm-12" align="center">
+    
+    <table>
+        <tr>
+            <th>Item Name</th>
+            <th>Unit</th>
+            <th>Price</th>
+        </tr>
+
+        @foreach (var item in Model.OrderDetail)
+        {
+
+                subTotal = subTotal + item.TotalPrice;
+
+                <tr>
+                    <td>@item.ItemName</td>
+                    <td>@item.ItemQuantity</td>
+                    <td>@item.TotalPrice</td>
+                </tr>
+
+            
+
+        }
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td>---------</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>SubTotal: </td>
+            <td>@subTotal ₹</td>td>
+        </tr>
+
+        @{
+            var GST = subTotal * 0.18;
+        }
+        <tr>
+            <td></td>
+            <td>Tax(18%): </td>
+            <td>@GST ₹</td>td>
+        </tr>
+        @{
+            var TotalPayable = subTotal + GST;
+        }
+
+        <tr>
+            <td></td>
+            <td>Total Payable: </td>
+            <td>@TotalPayable ₹</td>td>
+        </tr>
+
+
+    </table>
+
+
+
+</div>
+

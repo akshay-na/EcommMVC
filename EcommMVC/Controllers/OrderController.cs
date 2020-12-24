@@ -34,11 +34,6 @@ namespace EcommMVC.Controllers
             return View(myOrders);
         }
 
-        public ActionResult BuyNow()
-        {
-            return View();
-        }
-        
         // POST: /Orders/PleaseOrder
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -90,4 +85,5 @@ namespace EcommMVC.Controllers
             return 0;
         }
     }
+
 }

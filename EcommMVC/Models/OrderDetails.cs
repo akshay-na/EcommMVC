@@ -32,7 +32,7 @@ namespace EcommMVC.Models
     public virtual Order order { get; set; }
 
 
-        public OrderDetails()
+    public OrderDetails()
     {
 
     }

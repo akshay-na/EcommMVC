@@ -86,6 +86,8 @@ namespace EcommMVC.Controllers
 
             _context.Product.Add(product);
 
+            _context.SaveChanges();
+
             UpdateDatabase();
             
             return RedirectToAction("Index", "Home");

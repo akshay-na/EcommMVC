@@ -29,6 +29,7 @@ namespace EcommMVC.Models
         public DbSet<Cart> Carts { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

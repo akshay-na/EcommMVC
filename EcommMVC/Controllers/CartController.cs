@@ -80,7 +80,29 @@ namespace EcommMVC.Controllers
 
         }
 
-        
+        // GET: /Cart/ChangeItemQuantity
+        public async Task<ActionResult> ChangeItemQuantity(int cartId, int itemQuantity)
+        {
+
+            var ChangeQuantity = _context.Carts.SingleOrDefault(c => c.CartId == cartId);
+
+            if (!ModelState.IsValid)
+            {
+                return Content("Something Went Wrong! PLease Try Again");
+            }
+
+            if (ChangeQuantity != null)
+            {
+                ChangeQuantity.ItemQuantity = itemQuantity;
+                UpdateDatabase();
+            }
+
+
+            return RedirectToAction("Index", "Cart");
+        }
+
+
+
         // A Exception Handling Method for Updating the database records.
         private int UpdateDatabase()
         {

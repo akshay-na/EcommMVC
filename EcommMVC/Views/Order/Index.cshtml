@@ -5,5 +5,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>My Cart</h2>
+<h2>My Orders</h2>
 
+
+@if (Model == null)
+{
+
+
+    <p>You Don't Have Any Orders. Please Place An Order To Continue</p>
+
+
+}
+else
+{
+
+
+
+
+    <table class="table table-bordered table-hover">
+        <thread>
+            <tr>
+                <th>Order Items</th>
+                <th>Item Quantity</th>
+                <th>Price</th>
+                <th>Delivery Status</th>
+            </tr>
+        </thread>
+        <tbody>
+            @foreach (var order in Model)
+            {
+
+                <tr>
+                    <td>@Html.ActionLink((string)order.ItemName, "Details", "ProductDetails", new { id = order.ProductId })</td>
+                    <td>@order.ItemQuantity</td>
+                    <td>@order.TotalPrice</td>
+                    <td>@order.DeliverStatus</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+}
