@@ -1,6 +1,5 @@
 ﻿@using System.Linq
 @using EcommMVC.Models
-@using EcommMVC.ViewModels
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -38,6 +37,8 @@ else
             DeliverStatus = false,
         });
     }
+
+    TempData["orderList"] = orders;
 
 
     <table class="table table-bordered table-hover">
@@ -89,16 +90,11 @@ else
             <td>
                 <h4>Subtotal: @subTotal ₹</h4>
             </td>
-            
-            @{
-                var OrderList = new ListOfOrderDetails(@orders);
-            }
+
 
             <td>
-                <form action="@Url.Action("GenerateInvoice", "Invoice", @OrderList)" method="POST">
-                    @Html.AntiForgeryToken()
-                    <input class="btn btn-warning" type="submit" value="Place OrderD" />
-                </form>
+
+                <input class="btn btn-warning" value="Place Order" type="button" onclick="location.href='@Url.Action("GenerateInvoice", "Invoice" )'"/>
 
             </td>
         </tr>

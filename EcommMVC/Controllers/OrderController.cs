@@ -34,20 +34,34 @@ namespace EcommMVC.Controllers
             return View(myOrders);
         }
 
-        // POST: /Orders/PleaseOrder
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> PlaceOrder(List<OrderDetails> orders)
+
+        // GET: /Orders/PlaceOrder
+        public ActionResult PlaceOrder()
         {
 
-            var TotalAmount = 0.00;
 
-            foreach (var order in orders)
+            var guid = Guid.NewGuid();
+
+            //var guid = _context.Orders.ToList().Where(o => o.OrderId == guid);
+            
+            return View();
+        }
+
+        // POST: /Orders/PlaceOrder
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> PlaceOrder(Order order)
+        {
+
+
+            var TotalPayable = (double)TempData["totalPayable"];
+
+
+            if (!ModelState.IsValid)
             {
-                _context.OrderDetails.Add(order);
-                TotalAmount = TotalAmount + order.TotalPrice;
+                return View(order);
             }
-
+            
             UpdateDatabase();
 
 

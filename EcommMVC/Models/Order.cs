@@ -10,8 +10,12 @@ namespace EcommMVC.Models
 {
   public class Order
   {
-    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public long OrderId { get; set; }
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; }
+    [Required]
+    [StringLength(128)]
+    public string OrderId { get; set; }
     public string UserId { get; set; }
     [Required]
     public string CCAddress { get; set; }

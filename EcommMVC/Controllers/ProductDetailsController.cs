@@ -30,7 +30,9 @@ namespace EcommMVC.Controllers
         public ViewResult Index()
         {
 
-            var Products = _context.Product;
+
+
+        var Products = _context.Product;
 
             return View(Products);
         }
@@ -58,8 +60,8 @@ namespace EcommMVC.Controllers
                 return HttpNotFound();
 
 
-           
-            
+
+
             return View(Product);
         }
 
@@ -71,7 +73,7 @@ namespace EcommMVC.Controllers
             return View();
 
         }
-        
+
         // POST: /Products/AddProducts
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -89,11 +91,11 @@ namespace EcommMVC.Controllers
             _context.SaveChanges();
 
             UpdateDatabase();
-            
+
             return RedirectToAction("Index", "Home");
 
         }
-        
+
         //POST: /Products/RemoveProducts
         [HttpPost]
         [ValidateAntiForgeryToken]

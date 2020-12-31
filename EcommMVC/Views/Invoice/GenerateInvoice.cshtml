@@ -9,64 +9,76 @@
 
 <h2>Invoice</h2>
 
+<style>
+
+    table {
+        border-collapse: separate;
+        border-spacing: 50px 0;
+    }
+
+    td {
+        padding: 10px 0;
+        text-align: left;
+    }
+
+    caption {
+        color: #333;
+        font-weight: 400;
+        font-size: 12pt;
+        background: none;
+        text-align: right;
+    }
+
+</style>
+
 <div class="col-lg-12 col-md-12 col-sm-12" align="center">
     
     <table>
+
         <tr>
             <th>Item Name</th>
+            <th></th>
             <th>Unit</th>
-            <th>Price</th>
+            <th></th>
+            <th>Price (in ₹)</th>
         </tr>
 
-        @foreach (var item in Model.OrderDetail)
+
+        <br/>
+
+        @foreach (var item in Model)
         {
 
-                subTotal = subTotal + item.TotalPrice;
+            subTotal = subTotal + item.TotalPrice;
 
-                <tr>
-                    <td>@item.ItemName</td>
-                    <td>@item.ItemQuantity</td>
-                    <td>@item.TotalPrice</td>
-                </tr>
+            <tr>
+                <td>@item.ItemName</td>
+                <td></td>
+                <td>@item.ItemQuantity</td>
+                <td></td>
+                <td>@item.TotalPrice ₹</td>
+            </tr>
 
-            
+
 
         }
-
-        <tr>
-            <td></td>
-            <td></td>
-            <td>---------</td>
-        </tr>
-
-        <tr>
-            <td></td>
-            <td>SubTotal: </td>
-            <td>@subTotal ₹</td>td>
-        </tr>
 
         @{
             var GST = subTotal * 0.18;
-        }
-        <tr>
-            <td></td>
-            <td>Tax(18%): </td>
-            <td>@GST ₹</td>td>
-        </tr>
-        @{
             var TotalPayable = subTotal + GST;
+
+            TempData["totalPayable"] = TotalPayable;
         }
 
-        <tr>
-            <td></td>
-            <td>Total Payable: </td>
-            <td>@TotalPayable ₹</td>td>
-        </tr>
-
+        
+        
+        <caption style="caption-side: bottom">
+            Sub Total     :   @subTotal ₹<br />
+            Tax(18%)      :   @GST ₹     <br /> <b>
+                Total Payable :   @TotalPayable ₹ </b>
+        </caption>
 
     </table>
-
-
 
 </div>
 

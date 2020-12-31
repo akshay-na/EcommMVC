@@ -34,7 +34,7 @@ namespace EcommMVC.Controllers
             var cart = _context.Carts.ToList().Where(c => c.UserId == User.Identity.GetUserId());
 
             return View(cart);
-            
+
         }
 
 
@@ -65,7 +65,7 @@ namespace EcommMVC.Controllers
         {
 
             var RemoveItem = _context.Carts.SingleOrDefault(c => c.CartId == cartId);
-            
+
             if (!ModelState.IsValid)
             {
                 return View(cartId);
