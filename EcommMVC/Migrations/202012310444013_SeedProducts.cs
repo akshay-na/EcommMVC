@@ -8,13 +8,17 @@
         public override void Up()
         {
 
-            Sql("INSERT INTO ProductDetails(VendorId, ProductName, ProductPrice, ProductQuantity,  ProductCategory) VALUES (N'2b988239-34c3-4e17-845c-e60d9fe0aec7', 'OnePlus 5', 32999, 100, 'Mobile')");
-            Sql("INSERT INTO ProductDetails(VendorId, ProductName, ProductPrice, ProductQuantity,  ProductCategory) VALUES (N'2b988239-34c3-4e17-845c-e60d9fe0aec7', 'ASUS Laptop', 49999, 50, 'Laptop')");
-            Sql("INSERT INTO ProductDetails(VendorId, ProductName, ProductPrice, ProductQuantity,  ProductCategory) VALUES (N'2b988239-34c3-4e17-845c-e60d9fe0aec7', 'Sony Headphones', 4999, 200, 'Mobile Accessories')");
-            Sql("INSERT INTO ProductDetails(VendorId, ProductName, ProductPrice, ProductQuantity,  ProductCategory) VALUES (N'2b988239-34c3-4e17-845c-e60d9fe0aec7', 'Apple Watch Series 6', 39999, 20, 'Watch')");
-            Sql("INSERT INTO ProductDetails(VendorId, ProductName, ProductPrice, ProductQuantity,  ProductCategory) VALUES (N'2b988239-34c3-4e17-845c-e60d9fe0aec7', 'iPhone 12', 69999, 200, 'Mobile')");
-            Sql("INSERT INTO ProductDetails(VendorId, ProductName, ProductPrice, ProductQuantity,  ProductCategory) VALUES (N'2b988239-34c3-4e17-845c-e60d9fe0aec7', 'OnePlus Y-series TV 32', 13999, 100, 'TV')");
-            Sql("INSERT INTO ProductDetails(VendorId, ProductName, ProductPrice, ProductQuantity,  ProductCategory) VALUES (N'2b988239-34c3-4e17-845c-e60d9fe0aec7', 'Gaming PC with RTX 3090', 105999, 10, 'GPU')");
+            Sql(@"
+
+                INSERT INTO [dbo].[ProductDetails] ([ProductId], [VendorId], [ProductName], [ProductQuantity], [ProductPrice], [ProductCategory], [ProductPicPath]) VALUES (1, N'2b988239-34c3-4e17-845c-e60d9fe0aec7', N'OnePlus 5', 100, 32999, N'Mobile', N'http://127.0.0.1:8887/Products/1.jpg')
+                INSERT INTO [dbo].[ProductDetails] ([ProductId], [VendorId], [ProductName], [ProductQuantity], [ProductPrice], [ProductCategory], [ProductPicPath]) VALUES (2, N'2b988239-34c3-4e17-845c-e60d9fe0aec7', N'ASUS Laptop', 50, 49999, N'Laptop', N'http://127.0.0.1:8887/Products/2.jpg')
+                INSERT INTO [dbo].[ProductDetails] ([ProductId], [VendorId], [ProductName], [ProductQuantity], [ProductPrice], [ProductCategory], [ProductPicPath]) VALUES (3, N'2b988239-34c3-4e17-845c-e60d9fe0aec7', N'Sony Headphones', 200, 4999, N'Mobile Accessories', N'http://127.0.0.1:8887/Products/3.jpg')
+                INSERT INTO [dbo].[ProductDetails] ([ProductId], [VendorId], [ProductName], [ProductQuantity], [ProductPrice], [ProductCategory], [ProductPicPath]) VALUES (4, N'2b988239-34c3-4e17-845c-e60d9fe0aec7', N'Apple Watch Series 6', 20, 39999, N'Watch', N'http://127.0.0.1:8887/Products/4.jpg')
+                INSERT INTO [dbo].[ProductDetails] ([ProductId], [VendorId], [ProductName], [ProductQuantity], [ProductPrice], [ProductCategory], [ProductPicPath]) VALUES (5, N'2b988239-34c3-4e17-845c-e60d9fe0aec7', N'iPhone 12', 200, 69999, N'Mobile', N'http://127.0.0.1:8887/Products/5.jpg')
+                INSERT INTO [dbo].[ProductDetails] ([ProductId], [VendorId], [ProductName], [ProductQuantity], [ProductPrice], [ProductCategory], [ProductPicPath]) VALUES (6, N'2b988239-34c3-4e17-845c-e60d9fe0aec7', N'OnePlus Y-series TV 32', 100, 13999, N'TV', N'http://127.0.0.1:8887/Products/6.jpg')
+                INSERT INTO [dbo].[ProductDetails] ([ProductId], [VendorId], [ProductName], [ProductQuantity], [ProductPrice], [ProductCategory], [ProductPicPath]) VALUES (7, N'2b988239-34c3-4e17-845c-e60d9fe0aec7', N'Gaming PC with RTX 3090', 10, 105999, N'GPU', N'http://127.0.0.1:8887/Products/7.jpg')
+
+            ");
         }
 
         public override void Down()

@@ -1,4 +1,5 @@
 ﻿@using EcommMVC.Models
+@model IEnumerable<EcommMVC.Models.OrderDetails>
 
 @{
     ViewBag.Title = "Index";
@@ -8,29 +9,39 @@
 <h2>My Orders</h2>
 
 
-@if (Model == null)
+@if (!Model.Any())
 {
 
+    <div class="container-fluid" align="center"><p>You Don't Have Any Orders. Please Place An Order To Continue</p></div>
 
-    <p>You Don't Have Any Orders. Please Place An Order To Continue</p>
 
 
 }
 else
 {
 
+    <style>
+        caption {
+            color: #333;
+            font-weight: 400;
+            font-size: 12pt;
+            background: none;
+            text-align: right;
+        }
+    </style>
 
 
 
-    <table class="table table-bordered table-hover">
-        <thread>
+
+    <table class="table table-bordered table-hover" id="invoice-table">
+        <thead>
             <tr>
                 <th>Order Items</th>
                 <th>Item Quantity</th>
                 <th>Price</th>
                 <th>Delivery Status</th>
             </tr>
-        </thread>
+        </thead>
         <tbody>
             @foreach (var order in Model)
             {

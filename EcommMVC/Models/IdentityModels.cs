@@ -10,6 +10,7 @@ namespace EcommMVC.Models
     public class ApplicationUser : IdentityUser
     {
         public string Hometown { get; set; }
+        public string ProfilePicPath { get; set; }
 
         public double Wallet { get; set; } = 1000.00;
 

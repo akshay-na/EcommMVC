@@ -16,6 +16,27 @@ namespace EcommMVC
                 "~/Scripts/DataTables/dataTables.bootstrap.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/bundles/Ecomm_TempJs").IncludeDirectory(
+                "~/Content/Ecomm-Temp", "*.js", true));
+
+            bundles.Add(new ScriptBundle("~/bundles/Ecomm_TempCss").IncludeDirectory(
+                "~/Content/Ecomm-Temp", "*.css", true));
+
+            bundles.Add(new ScriptBundle("~/bundles/Ecomm_TempScss").IncludeDirectory(
+                "~/Content/Ecomm-Temp", "*.scss", true));
+
+            bundles.Add(new ScriptBundle("~/bundles/Ecomm_TempTtf").IncludeDirectory(
+                "~/Content/Ecomm-Temp", "*.ttf", true));
+
+            bundles.Add(new ScriptBundle("~/bundles/Ecomm_TempEot").IncludeDirectory(
+                "~/Content/Ecomm-Temp", "*.eot", true));
+
+            bundles.Add(new ScriptBundle("~/bundles/Ecomm_TempWoff").IncludeDirectory(
+                "~/Content/Ecomm-Temp", "*.woff", true));
+
+            bundles.Add(new ScriptBundle("~/bundles/Ecomm_TempWoff2").IncludeDirectory(
+                "~/Content/Ecomm-Temp", "*.woff2", true));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                 "~/Scripts/jquery.unobtrusive*",
                 "~/Scripts/jquery.validate*"));

@@ -1,5 +1,6 @@
 ﻿@using System.Linq
 @using EcommMVC.Models
+@model IEnumerable<EcommMVC.Models.Cart>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,10 +9,11 @@
 <h2>My Cart</h2>
 
 
-@if (Model == null){
+@if (!Model.Any())
+{
 
 
-    <p>You Don't Have Any Items In Your Cart. Please Add Items To Continue</p>
+    <div class="container-fluid" align="center" ><p>You Don't Have Any Items In Your Cart. Please Add Items To Continue</p></div>
 
 
 }
@@ -41,15 +43,25 @@ else
     TempData["orderList"] = orders;
 
 
-    <table class="table table-bordered table-hover">
-        <thread>
+    <style>
+        caption {
+            color: #333;
+            font-weight: 400;
+            font-size: 12pt;
+            background: none;
+            text-align: right;
+        }
+    </style>
+
+    <table class="table table-bordered table-hover" id="cart-table">
+        <thead>
             <tr>
                 <th>Cart Items</th>
                 <th>Item Quantity</th>
                 <th>Price</th>
                 <td>Action</td>
             </tr>
-        </thread>
+        </thead>
         <tbody>
         @foreach (var cart in Model)
         {
@@ -59,48 +71,46 @@ else
                 <td>@Html.ActionLink((string)cart.ItemName, "Details", "ProductDetails", new { cartId = cart.ItemId })</td>
                 <td>
                     <select id="itemQuantity" Name="@cart.ItemQuantity">
-                        <option value="1" onselect="location.href('@Url.Action("ChangeItemQuantity", "Cart", new { @cartId = cart.CartId, @itemQuantity = 1 })')" >1</option>
-                        <option value="1" onselect="location.href('@Url.Action("ChangeItemQuantity", "Cart", new { @cartId = cart.CartId, @itemQuantity = 2 })')" >2</option>
-                        <option value="1" onselect="location.href('@Url.Action("ChangeItemQuantity", "Cart", new { @cartId = cart.CartId, @itemQuantity = 3 })')" >3</option>
-                        <option value="1" onselect="location.href('@Url.Action("ChangeItemQuantity", "Cart", new { @cartId = cart.CartId, @itemQuantity = 4 })')" >4</option>
-                        <option value="1" onselect="location.href('@Url.Action("ChangeItemQuantity", "Cart", new { @cartId = cart.CartId, @itemQuantity = 5 })')" >5</option>
+                        <option value="1" onselect="location.href('@Url.Action("ChangeItemQuantity", "Cart", new { @cartId = cart.CartId, @itemQuantity = 1 })')">1</option>
+                        <option value="1" onselect="location.href('@Url.Action("ChangeItemQuantity", "Cart", new { @cartId = cart.CartId, @itemQuantity = 2 })')">2</option>
+                        <option value="1" onselect="location.href('@Url.Action("ChangeItemQuantity", "Cart", new { @cartId = cart.CartId, @itemQuantity = 3 })')">3</option>
+                        <option value="1" onselect="location.href('@Url.Action("ChangeItemQuantity", "Cart", new { @cartId = cart.CartId, @itemQuantity = 4 })')">4</option>
+                        <option value="1" onselect="location.href('@Url.Action("ChangeItemQuantity", "Cart", new { @cartId = cart.CartId, @itemQuantity = 5 })')">5</option>
 
                     </select>
                 </td>
                 <td>@ItemPrice</td>
                 <td>
-
                     <form action="@Url.Action("RemoveFromCart", "Cart", new {cartId = cart.CartId})" method="POST">
                         @Html.AntiForgeryToken()
                         <input class="btn btn-danger" type="submit" value="Remove Item From Cart" />
                     </form>
-
                 </td>
-                
-                
-
-
-
             </tr>
 
         }
-        <tr>
-            <td></td>
-            <td></td>
-            <td>
-                <h4>Subtotal: @subTotal ₹</h4>
-            </td>
 
-
-            <td>
-
-                <input class="btn btn-warning" value="Place Order" type="button" onclick="location.href='@Url.Action("GenerateInvoice", "Invoice" )'"/>
-
-            </td>
-        </tr>
         </tbody>
+        <caption style="caption-side: bottom">
+            <h4>Subtotal: @subTotal ₹</h4> <br />
+            <input class="btn btn-warning" value="Place Order" type="button" onclick="location.href='@Url.Action("GenerateInvoice", "Invoice" )'" />
+        </caption>
     </table>
-
 }
 
+
+@section Scripts
+{
+
+    <script>
+
+        $(document).ready(function() {
+            $('#cart-table').DataTable();
+        } );
+
+    </script>
+
+
+
+}
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace EcommMVC.Controllers
         {
 
            var myOrders =  _context.OrderDetails.ToList().Where(o => o.UserId == User.Identity.GetUserId());
-            
+
             return View(myOrders);
         }
 
@@ -40,10 +41,27 @@ namespace EcommMVC.Controllers
         {
 
 
-            var guid = Guid.NewGuid();
 
-            //var guid = _context.Orders.ToList().Where(o => o.OrderId == guid);
-            
+            var check = true;
+            string OrderId = "";
+
+            while (check)
+            {
+                var guid = Guid.NewGuid().ToString();
+
+                var checkOrderId = _context.Orders.ToList().Where(o =>
+                    o.OrderId.Equals(guid));
+
+                if (!checkOrderId.Any())
+                {
+                    check = false;
+                    OrderId = guid;
+                }
+
+            }
+
+            TempData["OrderId"] = OrderId;
+
             return View();
         }
 
@@ -54,21 +72,47 @@ namespace EcommMVC.Controllers
         {
 
 
-            var TotalPayable = (double)TempData["totalPayable"];
-
-
             if (!ModelState.IsValid)
             {
                 return View(order);
             }
-            
+
+
+            var TotalPayable = (double)TempData["totalPayable"];
+            var cart = _context.Carts.ToList().Where(c => c.UserId == User.Identity.GetUserId());
+            var orderDetails = (IEnumerable<OrderDetails>)TempData["orderList"];
+            //var CurrentUser = _context.Users.SingleOrDefault(u => u.Id == User.Identity.GetUserId());
+
+
+            //var Balance = CurrentUser.Wallet - TotalPayable;
+
+
+            foreach (var item in orderDetails)
+            {
+
+                item.OrderId = order.OrderId;
+                _context.OrderDetails.Add(item);
+
+
+            }
+
+            foreach (var item in cart)
+            {
+                _context.Carts.Remove(item);
+            }
+
+
+            _context.Orders.Add(order);
+
+
+
             UpdateDatabase();
 
 
             return RedirectToAction("Index", "ProductDetails");
 
 
-            
+
         }
 
         // A Exception Handling Method for Updating the database records.

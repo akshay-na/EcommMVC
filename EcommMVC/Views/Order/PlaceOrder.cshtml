@@ -1,4 +1,4 @@
-﻿@*@using EcommMVC.Models;
+﻿@using EcommMVC.Models;
 @using Microsoft.AspNet.Identity;
 @model EcommMVC.Models.Order
 @{
@@ -15,38 +15,43 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.HiddenFor(m => m.UserId, new { @Value = User.Identity.GetUserId() }, new { @class = "form-control" })
+        @Html.HiddenFor(m => m.UserId, new { @Value = User.Identity.GetUserId() })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.ProductCategory, "Product Category:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ProductCategory, new { @class = "form-control" })
+            @Html.HiddenFor(m => m.OrderId, new { @Value = TempData["OrderId"] })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.ProductQuantity, "Product Quantity:", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.CCAddress, "CC Address:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ProductQuantity, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.CCAddress, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.ProductPrice, "Product Price:", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.CCName, "Name on CC:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ProductPrice, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.CCName, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
+        @Html.LabelFor(m => m.CCNumber, "CC Number:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.HiddenFor(m => m.VendorId, new { @Value = User.Identity.GetUserId() })
-
+            @Html.TextBoxFor(m => m.CCNumber, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CCExpiryDate, "Expiry Date:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CCExpiryDate, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Add Product" class="btn btn-success" />
+            <input type="submit" value="Place Order" class="btn btn-success" />
         </div>
     </div>
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}*@
+}

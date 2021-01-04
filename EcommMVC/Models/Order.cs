@@ -21,10 +21,10 @@ namespace EcommMVC.Models
     public string CCAddress { get; set; }
     public string CCName { get; set; }
     [Required]
-    public int CCNumber { get; set; } 
-    [Required] 
+    public int CCNumber { get; set; }
+    [Required]
     public string CCExpiryDate { get; set; }
-    
+
     [JsonIgnore]
     [ForeignKey("UserId")]
     public virtual ApplicationUser User { get; set; }
