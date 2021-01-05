@@ -18,12 +18,19 @@ namespace EcommMVC.Models
     public string OrderId { get; set; }
     public string UserId { get; set; }
     [Required]
-    public string CCAddress { get; set; }
-    public string CCName { get; set; }
+    public string FirstName { get; set; }
     [Required]
-    public int CCNumber { get; set; }
+    public string LastName { get; set; }
     [Required]
-    public string CCExpiryDate { get; set; }
+    public string Email { get; set; }
+    [Required]
+    public string Address1 { get; set; }
+    [Required]
+    public string Address2 { get; set; }
+    [Required]
+    public int ZipCode { get; set; }
+    [Required]
+    public bool? SaveInfo { get; set; }
 
     [JsonIgnore]
     [ForeignKey("UserId")]
@@ -39,21 +46,29 @@ namespace EcommMVC.Models
       return obj is Order order &&
              OrderId == order.OrderId &&
              UserId == order.UserId &&
-             CCAddress == order.CCAddress &&
-             CCName == order.CCName &&
-             CCNumber == order.CCNumber &&
-             CCExpiryDate == order.CCExpiryDate;
+             FirstName == order.FirstName &&
+             LastName == order.LastName &&
+             Email == order.Email &&
+             Address1 == order.Address1 &&
+             Address2 == order.Address2 &&
+             ZipCode == order.ZipCode &&
+             SaveInfo == order.SaveInfo &&
+             EqualityComparer<ApplicationUser>.Default.Equals(User, order.User);
     }
 
     public override int GetHashCode()
     {
-      int hashCode = 536261816;
-      hashCode = hashCode * -1521134295 + OrderId.GetHashCode();
+      int hashCode = 1069919772;
+      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(OrderId);
       hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(UserId);
-      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CCAddress);
-      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CCName);
-      hashCode = hashCode * -1521134295 + CCNumber.GetHashCode();
-      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CCExpiryDate);
+      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FirstName);
+      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LastName);
+      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Email);
+      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Address1);
+      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Address2);
+      hashCode = hashCode * -1521134295 + ZipCode.GetHashCode();
+      hashCode = hashCode * -1521134295 + SaveInfo.GetHashCode();
+      hashCode = hashCode * -1521134295 + EqualityComparer<ApplicationUser>.Default.GetHashCode(User);
       return hashCode;
     }
   }

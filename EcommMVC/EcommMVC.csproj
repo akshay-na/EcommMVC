@@ -250,6 +250,10 @@
     <Compile Include="Migrations\202101041226499_AddedCartPic.designer.cs">
       <DependentUpon>202101041226499_AddedCartPic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101050617458_ModifiedOrderModel.cs" />
+    <Compile Include="Migrations\202101050617458_ModifiedOrderModel.designer.cs">
+      <DependentUpon>202101050617458_ModifiedOrderModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -763,6 +767,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101041226499_AddedCartPic.resx">
       <DependentUpon>202101041226499_AddedCartPic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101050617458_ModifiedOrderModel.resx">
+      <DependentUpon>202101050617458_ModifiedOrderModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

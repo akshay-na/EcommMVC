@@ -60,7 +60,7 @@ namespace EcommMVC.Controllers
 
             }
 
-            TempData["OrderId"] = OrderId;
+            Session["OrderId"] = OrderId;
 
             return View();
         }
@@ -78,9 +78,9 @@ namespace EcommMVC.Controllers
             }
 
 
-            var TotalPayable = (double)TempData["totalPayable"];
+            var TotalPayable = (double)Session["totalPayable"];
             var cart = _context.Carts.ToList().Where(c => c.UserId == User.Identity.GetUserId());
-            var orderDetails = (IEnumerable<OrderDetails>)TempData["orderList"];
+            var orderDetails = (IEnumerable<OrderDetails>)Session["orderList"];
             //var CurrentUser = _context.Users.SingleOrDefault(u => u.Id == User.Identity.GetUserId());
 
 
