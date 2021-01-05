@@ -6,18 +6,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<h1>       @Model.ProductName</h1>
-<h2>------------------------------------------</h2>
-<h3>Product ID:                 @Model.ProductId</h3>
-<h3>Category:           @Model.ProductCategory</h3>
-<h3>Available Quantity: @Model.ProductQuantity</h3>
-<h3>Vendor Id:          @Model.VendorId</h3>
-<h2>Price:              @Model.ProductPrice ₹ </h2>
-
-<br>
-
-
 @{
     var cart = new Cart();
 
@@ -26,13 +14,126 @@
     cart.ItemName = @Model.ProductName;
     cart.ItemQuantity = 1;
     cart.ItemPrice = @Model.ProductPrice * cart.ItemQuantity;
+    cart.ItemPicPath = @Model.ProductPicPath;
 }
 
-<form action="@Url.Action("AddToCart", "Cart", cart)" method="POST">
-    @Html.AntiForgeryToken()
-    <input class="btn btn-warning" type="submit" value="Add To Cart"/>
-</form>
+<!--Main layout-->
+<main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
 
-<input class="btn btn-warning" type="button" value="Buy Now" onclick="location.href='@Url.Action("AddToCart", "Cart")'" />
+        <!--Grid row-->
+        <div class="row wow fadeIn">
 
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+                <img src="@Model.ProductPicPath" class="img-fluid" alt="">
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+                <!--Content-->
+                <div class="p-4">
+
+                    <p class="lead font-weight-bold">@Model.ProductName</p>
+
+                    <p class="lead">
+                        <span>@Model.ProductPrice ₹</span>
+                    </p>
+
+                    <p class="lead font-weight-bold">Description</p>
+
+                    <p>
+                        Blah Blah Blah Blah Blah Blah Blah Blah Blah
+                        Blah Blah Blah Blah Blah Blah Blah Blah Blah
+                        Blah Blah Blah Blah Blah Blah Blah Blah Blah...
+                    </p>
+
+                    <form action="@Url.Action("AddToCart", "Cart", cart)" method="POST">
+                        @Html.AntiForgeryToken()
+                        <button class="btn btn-primary btn-md my-0 p" type="submit">
+                            Add to cart
+                            <i class="fas fa-shopping-cart ml-1"></i>
+                        </button>
+                    </form>
+
+                </div>
+                <!--Content-->
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+        <hr>
+
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-md-6 text-center">
+
+                <h4 class="my-4 h4">Additional information</h4>
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
+                    voluptates,
+                    quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.
+                </p>
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4">
+
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4">
+
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4">
+
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+    </div>
+</main>
+<!--Main layout-->
+
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<!-- Initializations -->
+<script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+</script>
 

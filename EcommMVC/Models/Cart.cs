@@ -19,6 +19,7 @@ namespace EcommMVC.Models
     public string ItemName { get; set; }
     public int ItemQuantity { get; set; }
     public float ItemPrice { get; set; }
+    public string ItemPicPath { get; set; }
 
     [JsonIgnore]
     public virtual ProductDetails Product { get; set; }
@@ -29,7 +30,7 @@ namespace EcommMVC.Models
     {
 
     }
-    
+
 
 
         public override bool Equals(object obj)
@@ -40,6 +41,7 @@ namespace EcommMVC.Models
              UserId == cart.UserId &&
              ItemName == cart.ItemName &&
              ItemQuantity == cart.ItemQuantity &&
+             ItemPicPath == cart.ItemPicPath &&
              ItemPrice == cart.ItemPrice;
     }
 
@@ -50,6 +52,7 @@ namespace EcommMVC.Models
       hashCode = hashCode * -1521134295 + ItemId.GetHashCode();
       hashCode = hashCode * -1521134295 + UserId.GetHashCode();
       hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ItemName);
+      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ItemPicPath);
       hashCode = hashCode * -1521134295 + ItemQuantity.GetHashCode();
       hashCode = hashCode * -1521134295 + ItemPrice.GetHashCode();
       return hashCode;

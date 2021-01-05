@@ -24,6 +24,7 @@ namespace EcommMVC.Models
     public string ProductCategory { get; set; }
 
     public string ProductPicPath { get; set; }
+    public string ShortDiscription { get; set; }
 
 
     public ProductDetails()
@@ -31,7 +32,7 @@ namespace EcommMVC.Models
 
     }
 
-    public ProductDetails(string vendorId, long productId, string productName, int productQuantity, float productPrice, string productCategory)
+    public ProductDetails(string vendorId, long productId, string productName, int productQuantity, float productPrice, string productCategory, string productPicPath)
     {
       this.VendorId = vendorId;
       this.ProductId = productId;
@@ -39,6 +40,8 @@ namespace EcommMVC.Models
       this.ProductQuantity = productQuantity;
       this.ProductPrice = productPrice;
       this.ProductCategory = productCategory;
+      this.ProductPicPath = productPicPath;
+      this.ShortDiscription = ShortDiscription;
 
     }
 
@@ -50,6 +53,8 @@ namespace EcommMVC.Models
              ProductName == products.ProductName &&
              ProductQuantity == products.ProductQuantity &&
              ProductPrice == products.ProductPrice &&
+             ProductPicPath == products.ProductPicPath &&
+             ShortDiscription == products.ShortDiscription &&
              ProductCategory == products.ProductCategory;
     }
 
@@ -59,6 +64,8 @@ namespace EcommMVC.Models
       hashCode = hashCode * -1521134295 + VendorId.GetHashCode();
       hashCode = hashCode * -1521134295 + ProductId.GetHashCode();
       hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ProductName);
+      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ProductPicPath);
+      hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ShortDiscription);
       hashCode = hashCode * -1521134295 + ProductQuantity.GetHashCode();
       hashCode = hashCode * -1521134295 + ProductPrice.GetHashCode();
       hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ProductCategory);

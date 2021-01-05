@@ -242,6 +242,14 @@
     <Compile Include="Migrations\202101040555597_AddedPicPath.designer.cs">
       <DependentUpon>202101040555597_AddedPicPath.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101041047367_AddedShortDiscription.cs" />
+    <Compile Include="Migrations\202101041047367_AddedShortDiscription.designer.cs">
+      <DependentUpon>202101041047367_AddedShortDiscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101041226499_AddedCartPic.cs" />
+    <Compile Include="Migrations\202101041226499_AddedCartPic.designer.cs">
+      <DependentUpon>202101041226499_AddedCartPic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -729,6 +737,7 @@
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Views\Invoice\GenerateInvoice.cshtml" />
     <Content Include="Views\Order\PlaceOrder.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -748,6 +757,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101040555597_AddedPicPath.resx">
       <DependentUpon>202101040555597_AddedPicPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101041047367_AddedShortDiscription.resx">
+      <DependentUpon>202101041047367_AddedShortDiscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101041226499_AddedCartPic.resx">
+      <DependentUpon>202101041226499_AddedCartPic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
