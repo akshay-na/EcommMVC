@@ -64,6 +64,13 @@ namespace EcommMVC.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+
+            var CurrentUser = ApplicationDbContext.Create().Users.SingleOrDefault(u => u.Id == userId);
+            var ProductCount = ApplicationDbContext.Create().Product.Count(u => u.VendorId == userId);
+
+            Session["CurrentUser"] = CurrentUser;
+            Session["ProductCount"] = ProductCount;
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),

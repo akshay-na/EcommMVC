@@ -30,9 +30,7 @@ namespace EcommMVC.Controllers
         public ViewResult Index()
         {
 
-
-
-        var Products = _context.Product;
+            var Products = _context.Product;
 
             return View(Products);
         }

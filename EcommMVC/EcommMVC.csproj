@@ -254,6 +254,14 @@
     <Compile Include="Migrations\202101050617458_ModifiedOrderModel.designer.cs">
       <DependentUpon>202101050617458_ModifiedOrderModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101060831485_ModifiedOrderModel1.cs" />
+    <Compile Include="Migrations\202101060831485_ModifiedOrderModel1.designer.cs">
+      <DependentUpon>202101060831485_ModifiedOrderModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101060835065_ModifiedOrderDetails.cs" />
+    <Compile Include="Migrations\202101060835065_ModifiedOrderDetails.designer.cs">
+      <DependentUpon>202101060835065_ModifiedOrderDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -730,7 +738,6 @@
     <Content Include="webfonts\fa-brands-400.woff" />
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
-    <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\AddtoCart.cshtml" />
     <Content Include="Views\Cart\RemoveFromCart.cshtml" />
     <Content Include="Views\ProductDetails\RemoveProducts.cshtml" />
@@ -770,6 +777,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101050617458_ModifiedOrderModel.resx">
       <DependentUpon>202101050617458_ModifiedOrderModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101060831485_ModifiedOrderModel1.resx">
+      <DependentUpon>202101060831485_ModifiedOrderModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101060835065_ModifiedOrderDetails.resx">
+      <DependentUpon>202101060835065_ModifiedOrderDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

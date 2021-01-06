@@ -28,6 +28,9 @@ namespace EcommMVC.Models
 
         [JsonIgnore]
         public virtual ProductDetails Product { get; set; }
+        [JsonIgnore]
+        [ForeignKey("OrderId")]
+        public virtual Order order { get; set; }
 
 
         public OrderDetails()

@@ -11,17 +11,17 @@ namespace EcommMVC.Models
   public class Order
   {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
     [Required]
     [StringLength(128)]
-    public string OrderId { get; set; }
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public string OrderId { get; set; }
     public string UserId { get; set; }
     [Required]
     public string FirstName { get; set; }
     [Required]
     public string LastName { get; set; }
     [Required]
+    [EmailAddress]
     public string Email { get; set; }
     [Required]
     public string Address1 { get; set; }
@@ -30,7 +30,7 @@ namespace EcommMVC.Models
     [Required]
     public int ZipCode { get; set; }
     [Required]
-    public bool? SaveInfo { get; set; }
+    public bool SaveInfo { get; set; }
 
     [JsonIgnore]
     [ForeignKey("UserId")]
