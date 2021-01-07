@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using EcommMVC.Models;
+using EcommMVC.Views.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -15,9 +18,11 @@ namespace EcommMVC.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context;
 
         public ManageController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -65,11 +70,15 @@ namespace EcommMVC.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            var CurrentUser = ApplicationDbContext.Create().Users.SingleOrDefault(u => u.Id == userId);
-            var ProductCount = ApplicationDbContext.Create().Product.Count(u => u.VendorId == userId);
+            var CurrentUser = _context.Users.SingleOrDefault(u => u.Id == userId);
+            var ProductCount = _context.Product.Count(u => u.VendorId == userId);
+            var Orders = _context.OrderDetails.ToList().Where(u => u.UserId == userId);
+            var cart = _context.Carts.ToList().Where(u => u.UserId == userId);
 
             Session["CurrentUser"] = CurrentUser;
             Session["ProductCount"] = ProductCount;
+            Session["Orders"] = Orders;
+            Session["cart"] = cart;
 
             var model = new IndexViewModel
             {
@@ -329,13 +338,66 @@ namespace EcommMVC.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
+
+        // GET: /Manage/AddProfilePic
+
+        public ActionResult AddProfilePic()
+        {
+
+            return View();
+
+        }
+
+        // POST: /Manage/AddProfilePic
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddProfilePic(HttpPostedFileBase file)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            try
+            {
+
+                if (file != null)
+                {
+
+                    string fileName = User.Identity.GetUserId().ToString() + Path.GetExtension(file.FileName);
+                    string path = Path.Combine(Server.MapPath("~/StorageServer/Users"), fileName);
+
+
+                    file.SaveAs(path);
+
+                    var userId = User.Identity.GetUserId();
+                    var CurrentUser = _context.Users.SingleOrDefault(u => u.Id == userId);
+                    CurrentUser.ProfilePicPath = "/Users/" + fileName;
+                    _context.Users.AddOrUpdate(CurrentUser);
+                    UpdateDatabase();
+
+                }
+                ViewBag.FileStatus = "File uploaded successfully.";
+            }
+            catch (Exception)
+            {
+                ViewBag.FileStatus = "Error while file uploading."; ;
+            }
+
+            return RedirectToAction("Index", "ProductDetails");
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
             {
                 _userManager.Dispose();
                 _userManager = null;
+
             }
+            _context.Dispose();
 
             base.Dispose(disposing);
         }
@@ -393,6 +455,33 @@ namespace EcommMVC.Controllers
 
         #endregion
 
+        // A Exception Handling Method for Updating the database records.
+        private int UpdateDatabase()
+        {
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting
+                        // the current instance as InnerException
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
+            }
+
+            return 0;
+        }
 
     }
 }

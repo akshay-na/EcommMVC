@@ -7,7 +7,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>My Cart</h2>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">My Cart</li>
+    </ol>
+</nav>
+<!-- /Breadcrumb -->
 
 
 @if (!Model.Any())
@@ -24,7 +37,7 @@
         var subTotal = 0.00;
 
 
-        <div class="container">
+
 
         <!--Grid row-->
         <div class="row">
@@ -198,6 +211,7 @@
         </div>
         <!-- Grid row -->
 
-    </div>
-    <!--Section: Block Content-->
+
+
 }
+</div>

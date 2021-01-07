@@ -112,7 +112,7 @@ namespace EcommMVC.Controllers
                 {
                     OrderId = order.OrderId,
                     ProductId = item.ItemId,
-                    UserId = item.UserId,
+                    UserId = User.Identity.GetUserId(),
                     ItemQuantity = item.ItemQuantity,
                     ItemName = item.ItemName,
                     TotalPrice = item.ItemPrice * item.ItemQuantity,

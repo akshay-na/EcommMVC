@@ -6,55 +6,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>My Orders</h2>
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="container-fluid">
+
+    <h2>My Orders</h2>
 
 
-@if (!Model.Any())
-{
+    @if (!Model.Any())
+    {
 
-    <div class="container-fluid" align="center"><p>You Don't Have Any Orders. Please Place An Order To Continue</p></div>
-
-
-
-}
-else
-{
-
-    <style>
-        caption {
-            color: #333;
-            font-weight: 400;
-            font-size: 12pt;
-            background: none;
-            text-align: right;
-        }
-    </style>
+        <div class="container-fluid" align="center"><p>You Don't Have Any Orders. Please Place An Order To Continue</p></div>
 
 
 
+    }
+    else
+    {
 
-    <table class="table table-bordered table-hover" id="invoice-table">
-        <thead>
-            <tr>
-                <th>Order Items</th>
-                <th>Item Quantity</th>
-                <th>Price</th>
-                <th>Delivery Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var order in Model)
-            {
-
-                <tr>
-                    <td>@Html.ActionLink((string)order.ItemName, "Details", "ProductDetails", new { id = order.ProductId })</td>
-                    <td>@order.ItemQuantity</td>
-                    <td>@order.TotalPrice</td>
-                    <td>@order.DeliverStatus</td>
-                </tr>
-
+        <style>
+            caption {
+                color: #333;
+                font-weight: 400;
+                font-size: 12pt;
+                background: none;
+                text-align: right;
             }
-        </tbody>
-    </table>
+        </style>
 
-}
+
+
+
+        <table class="table table-bordered table-hover" id="invoice-table">
+            <thead>
+                <tr>
+                    <th>Order Items</th>
+                    <th>Item Quantity</th>
+                    <th>Price</th>
+                    <th>Delivery Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+
+                    <tr>
+                        <td><a href="/products/Details/@order.ProductId">@order.ItemName</a></td>
+                        <td>@order.ItemQuantity</td>
+                        <td>@order.TotalPrice</td>
+                        <td>@order.DeliverStatus</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+    }
+
+</div>
