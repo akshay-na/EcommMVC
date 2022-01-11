@@ -230,21 +230,13 @@
     <Compile Include="Migrations\202012240639422_InitialModel.designer.cs">
       <DependentUpon>202012240639422_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012240640567_SeedUsers.cs" />
-    <Compile Include="Migrations\202012240640567_SeedUsers.designer.cs">
-      <DependentUpon>202012240640567_SeedUsers.cs</DependentUpon>
+    <Compile Include="Migrations\202101060835075_SeedUsers.cs" />
+    <Compile Include="Migrations\202101060835075_SeedUsers.designer.cs">
+      <DependentUpon>202101060835075_SeedUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012310444013_SeedProducts.cs" />
-    <Compile Include="Migrations\202012310444013_SeedProducts.designer.cs">
-      <DependentUpon>202012310444013_SeedProducts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101040555597_AddedPicPath.cs" />
-    <Compile Include="Migrations\202101040555597_AddedPicPath.designer.cs">
-      <DependentUpon>202101040555597_AddedPicPath.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101041047367_AddedShortDiscription.cs" />
-    <Compile Include="Migrations\202101041047367_AddedShortDiscription.designer.cs">
-      <DependentUpon>202101041047367_AddedShortDiscription.cs</DependentUpon>
+    <Compile Include="Migrations\202101060835085_SeedProducts.cs" />
+    <Compile Include="Migrations\202101060835085_SeedProducts.designer.cs">
+      <DependentUpon>202101060835085_SeedProducts.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202101041226499_AddedCartPic.cs" />
     <Compile Include="Migrations\202101041226499_AddedCartPic.designer.cs">
@@ -762,17 +754,11 @@
     <EmbeddedResource Include="Migrations\202012240639422_InitialModel.resx">
       <DependentUpon>202012240639422_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012240640567_SeedUsers.resx">
-      <DependentUpon>202012240640567_SeedUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101060835075_SeedUsers.resx">
+      <DependentUpon>202101060835075_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012310444013_SeedProducts.resx">
-      <DependentUpon>202012310444013_SeedProducts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101040555597_AddedPicPath.resx">
-      <DependentUpon>202101040555597_AddedPicPath.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101041047367_AddedShortDiscription.resx">
-      <DependentUpon>202101041047367_AddedShortDiscription.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101060835085_SeedProducts.resx">
+      <DependentUpon>202101060835085_SeedProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101041226499_AddedCartPic.resx">
       <DependentUpon>202101041226499_AddedCartPic.cs</DependentUpon>

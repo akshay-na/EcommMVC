@@ -32,7 +32,9 @@
                         ProductQuantity = c.Int(nullable: false),
                         ProductPrice = c.Single(nullable: false),
                         ProductCategory = c.String(nullable: false),
-                    })
+                        ProductPicPath = c.String(),
+                        ShortDiscription = c.String(),
+                })
                 .PrimaryKey(t => t.ProductId);
 
             CreateTable(
@@ -58,6 +60,7 @@
                         Wallet = c.Double(nullable: true),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
+                        ProfilePicPath = c.String(),
                         PasswordHash = c.String(),
                         SecurityStamp = c.String(),
                         PhoneNumber = c.String(),
