@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b7066a13-4541-410a-816e-81a47416b9b8": {
+      "ProjectGuid": "b7066a13-4541-410a-816e-81a47416b9b8",
+      "DisplayName": "EcommMVC",
+      "ColorIndex": 0
+    },
+    "07d96c38-ebe2-4b11-86e5-3dc088732359": {
+      "ProjectGuid": "07d96c38-ebe2-4b11-86e5-3dc088732359",
+      "DisplayName": "EcommMVC.Tests",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}
